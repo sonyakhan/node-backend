@@ -6,7 +6,7 @@
 var express = require('express'); // call express
 var app = express(); // define our app using express
 var bodyParser = require('body-parser');
-var People = require('/people/models/people');
+var People = require('../people/models/people');
 
 // connect to the DB
 var mongoose = require('mongoose');
