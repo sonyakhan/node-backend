@@ -30,7 +30,7 @@ var router = express.Router(); // get an instance of the express router
 // middlewear to use for all requests
 router.use(function(req, res, next) {
   // do logging
-  console.log('Something is happening');
+  console.log('Changes made!');
   next(); // make sure we go to the next routes and don't stop here
 });
 
@@ -51,7 +51,7 @@ router.route('/people')
 
         var people = new People();     // create a new instance of the People model
         people.name = req.body.name;  // set the people name (comes from the request)
-        people.city = req.body.city; // set the people city
+        people.favoriteCity = req.body.favoriteCity; // set the people city
 
         // save the people and check for errors
         people.save(function(err) {
@@ -90,7 +90,9 @@ router.route('/people/:people_id')
            if (err) {
                res.send(err);
            }
-           people.name = req.body.name; // update the people's info
+           // update the people's info
+           people.name = req.body.name;
+           people.favoriteCity = req.body.favoriteCity;
            // save the people's info
            people.save(function (err) {
                if (err) {
@@ -121,4 +123,4 @@ app.use('/api', router);
 
 // --- start the server ---
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Running on port ' + port);
