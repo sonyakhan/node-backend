@@ -6,25 +6,17 @@
 var express = require('express'); // call express
 var app = express(); // define our app using express
 var bodyParser = require('body-parser');
-var People;
-
-app.use(require('../people/models/people'));
-
+var People = require('../people/models/people');
 
 // connect to the DB
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://admin:admin@people-shard-00-00-lciud.mongodb.net:27017,people-shard-00-01-lciud.mongodb.net:27017,people-shard-00-02-lciud.mongodb.net:27017/people?ssl=true&replicaSet=people-shard-0&authSource=admin');
-// mongoose.connect('mongodb://localhost/people');
-// mongoose.connect('mongodb://people:testpeople@ds139430.mlab.com:39430/peopleapp');
-// mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
-
-
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080; // set our port
+var port = process.env.PORT || 8080; // set the port
 
 // --- routes for API ---
 
@@ -40,7 +32,7 @@ router.use(function(req, res, next) {
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
   res.json({
-    message: 'hooray! welcome to my API!'
+    message: 'Welcome to my API!'
   });
 });
 
