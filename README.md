@@ -1,4 +1,4 @@
-# Spotify API
+# Backend API
 Client and Server which handles GET, PUT, POST, and DELETE requests hooked up to a MongoDB Atlas server.
 ## Installation
 Clone or Download this repo
